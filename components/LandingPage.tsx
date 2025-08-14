@@ -33,6 +33,21 @@ import {
   MapPin,
   Video,
   PlayCircle,
+  CheckCircle,
+  Zap,
+  Crown,
+  Baby,
+  Coffee,
+  MessageSquare,
+  Trophy,
+  Calendar,
+  Download,
+  Globe,
+  Headphones,
+  FileText,
+  Image,
+  Music,
+  Archive
 } from "lucide-react";
 import { ImageWithFallback } from "./figma/ImageWithFallback";
 
@@ -45,844 +60,321 @@ export function LandingPage({
   onGetStarted,
   onSignIn,
 }: LandingPageProps) {
-  const [currentTestimonial, setCurrentTestimonial] =
-    useState(0);
+  const [currentTestimonial, setCurrentTestimonial] = useState(0);
 
-  const benefits = [
+  const heroFeatures = [
     {
       icon: Shield,
-      title: "Sacred & Private",
-      description:
-        "Your memories are safe in a secure, invite-only vault — away from social media noise and unwanted exposure.",
-      color: "text-primary",
-      bgColor: "bg-primary/10",
+      title: "100% Private",
+      description: "Your memories, your family only",
+      color: "text-emerald-600",
+      bgColor: "bg-emerald-50",
+      borderColor: "border-emerald-200"
     },
     {
       icon: Heart,
-      title: "Simple for Everyone",
-      description:
-        "From grandparents to grandchildren — an experience designed to feel natural for all ages.",
-      color: "text-coral",
-      bgColor: "bg-coral/10",
+      title: "Elder Friendly",
+      description: "Simple for all generations",
+      color: "text-rose-600",
+      bgColor: "bg-rose-50",
+      borderColor: "border-rose-200"
     },
     {
-      icon: Smartphone,
-      title: "Download Anytime, Anywhere",
-      description:
-        "Your memories are always yours — export and keep them safely, no matter where life takes you.",
-      color: "text-violet",
-      bgColor: "bg-violet/10",
-    },
+      icon: Download,
+      title: "Always Yours",
+      description: "Export anytime, anywhere",
+      color: "text-blue-600",
+      bgColor: "bg-blue-50",
+      borderColor: "border-blue-200"
+    }
+  ];
+
+  const coreFeatures = [
     {
       icon: Mic,
-      title: "Voices That Never Fade",
-      description:
-        "Preserve the voices, blessings, and stories of loved ones forever — as if they were spoken just yesterday.",
-      color: "text-aqua",
-      bgColor: "bg-aqua/10",
-    },
-    {
-      icon: Share,
-      title: "Share Moments Your Way",
-      description:
-        "You decide who sees each memory — private by default, but share special moments instantly to WhatsApp or social media when you wish.",
-      color: "text-secondary",
-      bgColor: "bg-secondary/10",
+      title: "Voice Memories",
+      description: "Record and preserve the voices of loved ones forever",
+      gradient: "from-amber-500 to-orange-500",
+      textColor: "text-amber-700",
+      bgColor: "bg-amber-50",
+      borderColor: "border-amber-200"
     },
     {
       icon: TreePine,
-      title: "Your Story, Beautifully Woven",
-      description:
-        "Every photo, video, and voice note connects into your family tree, creating a living story for generations.",
-      color: "text-ink",
-      bgColor: "bg-ink/10",
+      title: "Family Tree",
+      description: "Connect memories to family members across generations",
+      gradient: "from-emerald-500 to-teal-500",
+      textColor: "text-emerald-700",
+      bgColor: "bg-emerald-50",
+      borderColor: "border-emerald-200"
     },
+    {
+      icon: Clock,
+      title: "Time Capsules",
+      description: "Schedule messages to unlock on special future dates",
+      gradient: "from-purple-500 to-indigo-500",
+      textColor: "text-purple-700",
+      bgColor: "bg-purple-50",
+      borderColor: "border-purple-200"
+    },
+    {
+      icon: Camera,
+      title: "Photo Stories",
+      description: "Organize photos with rich context and family connections",
+      gradient: "from-blue-500 to-cyan-500",
+      textColor: "text-blue-700",
+      bgColor: "bg-blue-50",
+      borderColor: "border-blue-200"
+    },
+    {
+      icon: Video,
+      title: "Video Memories",
+      description: "Capture and share precious video moments with family",
+      gradient: "from-red-500 to-pink-500",
+      textColor: "text-red-700",
+      bgColor: "bg-red-50",
+      borderColor: "border-red-200"
+    },
+    {
+      icon: BookOpen,
+      title: "Family Stories",
+      description: "Write and preserve family history, recipes, and wisdom",
+      gradient: "from-violet-500 to-purple-500",
+      textColor: "text-violet-700",
+      bgColor: "bg-violet-50",
+      borderColor: "border-violet-200"
+    }
   ];
 
   const testimonials = [
     {
-      name: "Sita Devi",
-      age: "78 years",
-      relation: "Grandmother",
-      text: "Finally, a place where I can share my stories with my grandchildren. They live so far away, but now they hear my voice every day.",
-      avatar:
-        "https://images.unsplash.com/photo-1554151228-14d9def656e4?w=100&h=100&fit=crop&crop=face",
-      location: "Jaipur, Rajasthan",
-    },
-    {
       name: "Priya Sharma",
-      age: "45 years",
-      relation: "Mother",
-      text: "I can finally organize our family recipes and traditions in one place. My daughter will never lose our family heritage.",
-      avatar:
-        "https://images.unsplash.com/photo-1494790108755-2616b612b77c?w=100&h=100&fit=crop&crop=face",
-      location: "Mumbai, Maharashtra",
+      role: "Mother of 3",
+      location: "Mumbai, India",
+      text: "Finally, a place where our family memories are safe and organized. My children love hearing their grandmother's stories.",
+      avatar: "https://images.unsplash.com/photo-1494790108755-2616b612b77c?w=100&h=100&fit=crop&crop=face",
+      rating: 5
     },
     {
-      name: "Rahul Gupta",
-      age: "32 years",
-      relation: "Son",
-      text: "This app helped me record my father's last conversations. Now my children will know their grandfather through his own words.",
-      avatar:
-        "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&h=100&fit=crop&crop=face",
-      location: "Bangalore, Karnataka",
+      name: "Rajesh Kumar",
+      role: "Grandfather",
+      location: "Delhi, India",
+      text: "I can easily share my life stories with my grandchildren. The voice recording feature is perfect for preserving our family history.",
+      avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop&crop=face",
+      rating: 5
     },
+    {
+      name: "Anita Patel",
+      role: "Family Historian",
+      location: "Ahmedabad, Gujarat",
+      text: "This app helped me digitize 50 years of family photos and connect them to our family tree. Absolutely incredible!",
+      avatar: "https://images.unsplash.com/photo-1554151228-14d9def656e4?w=100&h=100&fit=crop&crop=face",
+      rating: 5
+    }
   ];
 
   const stats = [
     {
       number: "50,000+",
-      label: "Families Connected",
+      label: "Families",
       icon: Users,
-      color: "text-aqua",
+      color: "text-blue-600"
     },
     {
       number: "2M+",
-      label: "Memories Preserved",
+      label: "Memories",
       icon: Heart,
-      color: "text-coral",
+      color: "text-rose-600"
     },
     {
       number: "15+",
       label: "Countries",
-      icon: TreePine,
-      color: "text-primary",
+      icon: Globe,
+      color: "text-emerald-600"
     },
     {
       number: "4.9★",
-      label: "App Rating",
+      label: "Rating",
       icon: Star,
-      color: "text-secondary",
+      color: "text-amber-600"
+    }
+  ];
+
+  const howItWorks = [
+    {
+      step: "01",
+      title: "Create Your Vault",
+      description: "Set up your private family memory space in under 2 minutes",
+      icon: Shield,
+      color: "text-blue-600",
+      bgColor: "bg-blue-50"
     },
+    {
+      step: "02",
+      title: "Add Family Members",
+      description: "Build your family tree and invite loved ones to join",
+      icon: Users,
+      color: "text-emerald-600",
+      bgColor: "bg-emerald-50"
+    },
+    {
+      step: "03",
+      title: "Preserve Memories",
+      description: "Upload photos, record voices, and write family stories",
+      icon: Camera,
+      color: "text-purple-600",
+      bgColor: "bg-purple-50"
+    },
+    {
+      step: "04",
+      title: "Share & Connect",
+      description: "Your family can access and contribute to the shared vault",
+      icon: Heart,
+      color: "text-rose-600",
+      bgColor: "bg-rose-50"
+    }
   ];
 
   const nextTestimonial = () => {
-    setCurrentTestimonial(
-      (prev) => (prev + 1) % testimonials.length,
-    );
+    setCurrentTestimonial((prev) => (prev + 1) % testimonials.length);
   };
 
   return (
-    <div className="min-h-screen bg-background vibrant-texture">
+    <div className="min-h-screen bg-background">
       {/* Hero Section */}
-      <section className="relative overflow-hidden bg-gradient-to-br from-primary/10 via-coral/5 to-aqua/10 pt-16 pb-20">
-        <div className="absolute inset-0 opacity-20">
-          <ImageWithFallback
-            src="https://images.unsplash.com/photo-1511632765486-a01980e01a18?w=800&h=600&fit=crop&crop=center"
-            alt="Family together"
-            className="w-full h-full object-cover"
-          />
+      <section className="relative overflow-hidden">
+        {/* Background with subtle pattern */}
+        <div className="absolute inset-0 bg-gradient-to-br from-violet-50 via-rose-50 to-amber-50">
+          <div className="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg"%3E%3Cg fill="none" fill-rule="evenodd"%3E%3Cg fill="%236A0572" fill-opacity="0.03"%3E%3Ccircle cx="30" cy="30" r="4"/%3E%3C/g%3E%3C/g%3E%3C/svg%3E')] opacity-40"></div>
         </div>
 
-        <div className="relative z-10 px-4 text-center space-y-8">
-          <div className="space-y-4">
-            <div className="flex justify-center">
-              <div className="p-4 bg-primary/20 rounded-full hero-float">
-                <Heart className="w-16 h-16 text-primary" />
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 pb-24">
+          <div className="text-center space-y-12">
+            {/* Main headline */}
+            <div className="space-y-6">
+              <div className="inline-flex items-center space-x-2 bg-white/80 backdrop-blur-sm rounded-full px-4 py-2 border border-violet-200">
+                <Sparkles className="w-4 h-4 text-violet-600" />
+                <span className="text-sm font-medium text-violet-700">Trusted by 50,000+ families worldwide</span>
               </div>
-            </div>
-            <div className="space-y-4">
-              <h1 className="text-5xl md:text-6xl text-primary max-w-4xl mx-auto">
-                Your Family's Sacred Digital Memory Vault
+              
+              <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold text-gray-900 leading-tight">
+                Your Family's
+                <span className="block bg-gradient-to-r from-violet-600 via-purple-600 to-pink-600 bg-clip-text text-transparent">
+                  Sacred Digital
+                </span>
+                <span className="block">Memory Vault</span>
               </h1>
-              <p className="text-2xl text-muted-foreground max-w-3xl mx-auto">
-                Preserve precious moments, stories, and wisdom
-                for generations. A private space where your
-                family's heritage lives forever.
+              
+              <p className="text-xl sm:text-2xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+                Preserve precious moments, stories, and wisdom for generations. 
+                A private space where your family's heritage lives forever.
               </p>
             </div>
-          </div>
 
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-            <Button
-              onClick={onGetStarted}
-              className="vibrant-button text-primary-foreground text-xl px-8 py-4 h-auto"
-            >
-              <Sparkles className="w-6 h-6 mr-2" />
-              Start Your Family Vault - Free
-            </Button>
-            <Button
-              onClick={onSignIn}
-              variant="outline"
-              className="border-2 border-primary text-primary hover:bg-primary hover:text-primary-foreground text-xl px-8 py-4 h-auto"
-            >
-              Already Have an Account? Sign In
-            </Button>
-          </div>
-
-          <div className="flex items-center justify-center space-x-6 pt-8 flex-wrap gap-y-4">
-            <div className="text-center">
-              <p className="text-3xl font-semibold text-primary">
-                Free Starter
-              </p>
-              <p className="text-muted-foreground">Access</p>
+            {/* CTA Buttons */}
+            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+              <Button
+                onClick={onGetStarted}
+                size="lg"
+                className="bg-gradient-to-r from-violet-600 to-purple-600 hover:from-violet-700 hover:to-purple-700 text-white px-8 py-4 text-lg font-semibold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300"
+              >
+                <Heart className="w-5 h-5 mr-2" />
+                Start Your Family Vault - Free
+              </Button>
+              
+              <Button
+                onClick={onSignIn}
+                variant="outline"
+                size="lg"
+                className="border-2 border-gray-300 text-gray-700 hover:bg-gray-50 px-8 py-4 text-lg font-semibold rounded-xl transition-all duration-300"
+              >
+                Sign In
+              </Button>
             </div>
-            <div className="w-px h-12 bg-border hidden sm:block"></div>
-            <div className="text-center">
-              <p className="text-3xl font-semibold text-coral">
-                Private
-              </p>
-              <p className="text-muted-foreground">& Secure</p>
-            </div>
-            <div className="w-px h-12 bg-border hidden sm:block"></div>
-            <div className="text-center">
-              <p className="text-3xl font-semibold text-aqua">
-                Elder
-              </p>
-              <p className="text-muted-foreground">Friendly</p>
-            </div>
-            <div className="w-px h-12 bg-border hidden sm:block"></div>
-            <div className="text-center">
-              <p className="text-3xl font-semibold text-violet">
-                Download
-              </p>
-              <p className="text-muted-foreground">
-                Anytime, Anywhere
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
 
-      {/* Feature Strip - Quick Highlights */}
-      <section className="py-16 px-4 bg-gradient-to-br from-background to-muted/20">
-        <div className="max-w-6xl mx-auto space-y-12">
-          <div className="text-center space-y-4">
-            <h2 className="text-4xl text-primary">
-              Signature Features That Make Memory Vault Special
-            </h2>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              Built for Families, Designed for Generations
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {/* Elders' Voices Feature */}
-            <Card
-              className="memory-card hover:scale-105 transition-all duration-300 rounded-2xl overflow-hidden bg-gradient-to-br from-amber-50 to-orange-50 border-amber-200 cursor-pointer"
-              onClick={onGetStarted}
-            >
-              <CardContent className="p-6 text-center space-y-4">
-                <div className="w-16 h-16 mx-auto bg-gradient-to-br from-amber-400 to-orange-500 rounded-2xl flex items-center justify-center">
-                  <Mic className="w-8 h-8 text-white" />
-                </div>
-                <div>
-                  <h3 className="text-xl font-medium text-primary mb-2">
-                    🎙 Elders' Voices
-                  </h3>
-                  <p className="text-lg text-amber-700 mb-3">
-                    Hear blessings anytime
-                  </p>
-                  <p className="text-sm text-muted-foreground leading-relaxed">
-                    Record voice messages from elders. Their
-                    blessings and stories live forever.
-                  </p>
-                </div>
-                <div className="bg-amber-100 rounded-lg p-3">
-                  <p className="text-xs text-amber-800 italic">
-                    "Papa's advice" • "Nani's lullabies"
-                  </p>
-                </div>
-                <Button
-                  onClick={onGetStarted}
-                  variant="outline"
-                  size="sm"
-                  className="border-amber-400 text-amber-700 hover:bg-amber-400 hover:text-white"
-                >
-                  Start Recording
-                </Button>
-              </CardContent>
-            </Card>
-
-            {/* Family Tree Feature */}
-            <Card
-              className="memory-card hover:scale-105 transition-all duration-300 rounded-2xl overflow-hidden bg-gradient-to-br from-emerald-50 to-teal-50 border-emerald-200 cursor-pointer"
-              onClick={onGetStarted}
-            >
-              <CardContent className="p-6 text-center space-y-4">
-                <div className="w-16 h-16 mx-auto bg-gradient-to-br from-emerald-400 to-teal-500 rounded-2xl flex items-center justify-center">
-                  <TreePine className="w-8 h-8 text-white" />
-                </div>
-                <div>
-                  <h3 className="text-xl font-medium text-primary mb-2">
-                    🌳 Family Tree
-                  </h3>
-                  <p className="text-lg text-emerald-700 mb-3">
-                    Your family, beautifully connected
-                  </p>
-                  <p className="text-sm text-muted-foreground leading-relaxed">
-                    Interactive family tree with memories
-                    attached to each person.
-                  </p>
-                </div>
-                <div className="bg-emerald-100 rounded-lg p-3">
-                  <p className="text-xs text-emerald-800 italic">
-                    "Grandpa's wedding photos" • "Dad's stories"
-                  </p>
-                </div>
-                <Button
-                  onClick={onGetStarted}
-                  variant="outline"
-                  size="sm"
-                  className="border-emerald-400 text-emerald-700 hover:bg-emerald-400 hover:text-white"
-                >
-                  Build Tree
-                </Button>
-              </CardContent>
-            </Card>
-
-            {/* Time Capsule Feature */}
-            <Card
-              className="memory-card hover:scale-105 transition-all duration-300 rounded-2xl overflow-hidden bg-gradient-to-br from-purple-50 to-pink-50 border-purple-200 cursor-pointer"
-              onClick={onGetStarted}
-            >
-              <CardContent className="p-6 text-center space-y-4">
-                <div className="w-16 h-16 mx-auto bg-gradient-to-br from-purple-400 to-pink-500 rounded-2xl flex items-center justify-center">
-                  <Clock className="w-8 h-8 text-white" />
-                </div>
-                <div>
-                  <h3 className="text-xl font-medium text-primary mb-2">
-                    🕰 Time Capsule
-                  </h3>
-                  <p className="text-lg text-purple-700 mb-3">
-                    Unlock surprises on special dates
-                  </p>
-                  <p className="text-sm text-muted-foreground leading-relaxed">
-                    Schedule messages to unlock on birthdays and
-                    anniversaries.
-                  </p>
-                </div>
-                <div className="bg-purple-100 rounded-lg p-3">
-                  <p className="text-xs text-purple-800 italic">
-                    "Dad's 18th birthday message" • "Anniversary
-                    surprise"
-                  </p>
-                </div>
-                <Button
-                  onClick={onGetStarted}
-                  variant="outline"
-                  size="sm"
-                  className="border-purple-400 text-purple-700 hover:bg-purple-400 hover:text-white"
-                >
-                  Create Capsule
-                </Button>
-              </CardContent>
-            </Card>
-
-            {/* Cultural Heritage Hub Feature */}
-            <Card
-              className="memory-card hover:scale-105 transition-all duration-300 rounded-2xl overflow-hidden bg-gradient-to-br from-red-50 to-orange-50 border-red-200 cursor-pointer"
-              onClick={onGetStarted}
-            >
-              <CardContent className="p-6 text-center space-y-4">
-                <div className="w-16 h-16 mx-auto bg-gradient-to-br from-red-600 to-orange-600 rounded-2xl flex items-center justify-center">
-                  <BookOpen className="w-8 h-8 text-white" />
-                </div>
-                <div>
-                  <h3 className="text-xl font-medium text-primary mb-2">
-                    🌏 Cultural Heritage Hub
-                  </h3>
-                  <p className="text-lg text-red-700 mb-3">
-                    Preserve traditions, pass them on
-                  </p>
-                  <p className="text-sm text-muted-foreground leading-relaxed">
-                    Organize family traditions, cultural
-                    rituals, and festivals in one place.
-                  </p>
-                </div>
-                <div className="bg-red-100 rounded-lg p-3">
-                  <p className="text-xs text-red-800 italic">
-                    "Diwali recipes" • "Christmas traditions"
-                  </p>
-                </div>
-                <Button
-                  onClick={onGetStarted}
-                  variant="outline"
-                  size="sm"
-                  className="border-red-400 text-red-700 hover:bg-red-400 hover:text-white"
-                >
-                  Start Heritage
-                </Button>
-              </CardContent>
-            </Card>
-
-            {/* Festival & Milestone Reminders Feature */}
-            <Card
-              className="memory-card hover:scale-105 transition-all duration-300 rounded-2xl overflow-hidden bg-gradient-to-br from-cyan-50 to-blue-50 border-cyan-200 cursor-pointer"
-              onClick={onGetStarted}
-            >
-              <CardContent className="p-6 text-center space-y-4">
-                <div className="w-16 h-16 mx-auto bg-gradient-to-br from-cyan-500 to-blue-500 rounded-2xl flex items-center justify-center">
-                  <Gift className="w-8 h-8 text-white" />
-                </div>
-                <div>
-                  <h3 className="text-xl font-medium text-primary mb-2">
-                    🎉 Festival & Milestone Reminders
-                  </h3>
-                  <p className="text-lg text-cyan-700 mb-3">
-                    Never miss a family moment
-                  </p>
-                  <p className="text-sm text-muted-foreground leading-relaxed">
-                    Track birthdays, anniversaries, and
-                    festivals with smart reminders.
-                  </p>
-                </div>
-                <div className="bg-cyan-100 rounded-lg p-3">
-                  <p className="text-xs text-cyan-800 italic">
-                    "Papa's birthday" • "Diwali celebration"
-                  </p>
-                </div>
-                <Button
-                  onClick={onGetStarted}
-                  variant="outline"
-                  size="sm"
-                  className="border-cyan-400 text-cyan-700 hover:bg-cyan-400 hover:text-white"
-                >
-                  Set Reminders
-                </Button>
-              </CardContent>
-            </Card>
-
-            {/* Memory Journeys Feature */}
-            <Card
-              className="memory-card hover:scale-105 transition-all duration-300 rounded-2xl overflow-hidden bg-gradient-to-br from-rose-50 to-pink-50 border-rose-200 cursor-pointer"
-              onClick={onGetStarted}
-            >
-              <CardContent className="p-6 text-center space-y-4">
-                <div className="w-16 h-16 mx-auto bg-gradient-to-br from-rose-500 to-pink-500 rounded-2xl flex items-center justify-center">
-                  <MapPin className="w-8 h-8 text-white" />
-                </div>
-                <div>
-                  <h3 className="text-xl font-medium text-primary mb-2">
-                    📖 Memory Journeys
-                  </h3>
-                  <p className="text-lg text-rose-700 mb-3">
-                    Stories told over time
-                  </p>
-                  <p className="text-sm text-muted-foreground leading-relaxed">
-                    Create timeline stories combining memories
-                    across years into journeys.
-                  </p>
-                </div>
-                <div className="bg-rose-100 rounded-lg p-3">
-                  <p className="text-xs text-rose-800 italic">
-                    "Aarav's childhood" • "Our Diwali years"
-                  </p>
-                </div>
-                <Button
-                  onClick={onGetStarted}
-                  variant="outline"
-                  size="sm"
-                  className="border-rose-400 text-rose-700 hover:bg-rose-400 hover:text-white"
-                >
-                  Create Journey
-                </Button>
-              </CardContent>
-            </Card>
-          </div>
-
-          {/* Call to Action under feature strip */}
-          <div className="text-center pt-8">
-            <Button
-              onClick={onGetStarted}
-              className="vibrant-button text-primary-foreground text-xl px-8 py-4 h-auto"
-            >
-              <Sparkles className="w-6 h-6 mr-2" />
-              Try All Features Free
-            </Button>
-          </div>
-        </div>
-      </section>
-
-      {/* Interactive Family Tree Preview */}
-      <section className="py-16 px-4">
-        <div className="max-w-6xl mx-auto text-center space-y-12">
-          <div className="space-y-4">
-            <h2 className="text-4xl text-primary">
-              See Your Family Tree Come to Life
-            </h2>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              Watch how your family connections grow and
-              memories multiply across generations
-            </p>
-          </div>
-
-          <Card className="memory-card p-8 bg-gradient-to-br from-cream to-background relative overflow-hidden">
-            {/* Animated connecting lines */}
-            <svg
-              className="absolute inset-0 w-full h-full pointer-events-none"
-              style={{ zIndex: 1 }}
-            >
-              <defs>
-                <linearGradient
-                  id="lineGradient"
-                  x1="0%"
-                  y1="0%"
-                  x2="100%"
-                  y2="0%"
-                >
-                  <stop
-                    offset="0%"
-                    stopColor="rgba(106, 5, 114, 0.3)"
-                  />
-                  <stop
-                    offset="100%"
-                    stopColor="rgba(23, 190, 187, 0.3)"
-                  />
-                </linearGradient>
-              </defs>
-              {/* Connection lines that animate */}
-              <path
-                d="M 200 120 L 400 120"
-                stroke="url(#lineGradient)"
-                strokeWidth="2"
-                className="animate-pulse"
-              />
-              <path
-                d="M 400 120 L 600 120"
-                stroke="url(#lineGradient)"
-                strokeWidth="2"
-                className="animate-pulse"
-                style={{ animationDelay: "0.5s" }}
-              />
-              <path
-                d="M 400 120 L 400 200"
-                stroke="url(#lineGradient)"
-                strokeWidth="2"
-                className="animate-pulse"
-                style={{ animationDelay: "1s" }}
-              />
-            </svg>
-
-            <div className="relative z-10 space-y-8">
-              <div className="grid grid-cols-3 gap-8 items-center">
-                {/* Grandparents */}
-                <div className="text-center space-y-3">
-                  <div className="flex justify-center space-x-4">
-                    <div
-                      className="relative group cursor-pointer transform hover:scale-110 transition-all duration-300"
-                      onClick={() => {
-                        const popup =
-                          document.getElementById(
-                            "grandpa-popup",
-                          );
-                        if (popup)
-                          popup.classList.toggle("hidden");
-                      }}
-                    >
-                      <Avatar className="w-16 h-16 border-4 border-primary/30 hover:border-primary transition-all">
-                        <AvatarImage src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop&crop=face" />
-                        <AvatarFallback>GF</AvatarFallback>
-                      </Avatar>
-                      <Badge className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 bg-primary text-primary-foreground text-xs">
-                        23
-                      </Badge>
-
-                      {/* Interactive popup */}
-                      <div
-                        id="grandpa-popup"
-                        className="hidden absolute -top-40 left-1/2 transform -translate-x-1/2 z-50"
-                      >
-                        <Card className="memory-card w-64 p-4 shadow-xl">
-                          <div className="space-y-3">
-                            <div className="flex items-center space-x-2">
-                              <Camera className="w-4 h-4 text-primary" />
-                              <span className="text-sm font-medium">
-                                Wedding Photo, 1960
-                              </span>
-                            </div>
-                            <div className="flex items-center space-x-2">
-                              <Mic className="w-4 h-4 text-coral" />
-                              <div className="flex-1 bg-coral/10 rounded-full h-2">
-                                <div className="bg-coral h-2 rounded-full w-3/4 animate-pulse"></div>
-                              </div>
-                              <PlayCircle className="w-4 h-4 text-coral cursor-pointer" />
-                            </div>
-                            <div className="bg-purple-100 rounded p-2">
-                              <div className="flex items-center space-x-1">
-                                <Clock className="w-3 h-3 text-purple-600" />
-                                <span className="text-xs text-purple-600">
-                                  Unlock on Miraya's 18th
-                                  Birthday
-                                </span>
-                              </div>
-                            </div>
-                          </div>
-                        </Card>
-                      </div>
-                    </div>
-
-                    <div
-                      className="relative group cursor-pointer transform hover:scale-110 transition-all duration-300"
-                      onClick={() => {
-                        const popup =
-                          document.getElementById(
-                            "grandma-popup",
-                          );
-                        if (popup)
-                          popup.classList.toggle("hidden");
-                      }}
-                    >
-                      <Avatar className="w-16 h-16 border-4 border-primary/30 hover:border-primary transition-all">
-                        <AvatarImage src="https://images.unsplash.com/photo-1554151228-14d9def656e4?w=100&h=100&fit=crop&crop=face" />
-                        <AvatarFallback>GM</AvatarFallback>
-                      </Avatar>
-                      <Badge className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 bg-primary text-primary-foreground text-xs">
-                        31
-                      </Badge>
-
-                      {/* Interactive popup */}
-                      <div
-                        id="grandma-popup"
-                        className="hidden absolute -top-32 left-1/2 transform -translate-x-1/2 z-50"
-                      >
-                        <Card className="memory-card w-56 p-4 shadow-xl">
-                          <div className="space-y-3">
-                            <div className="flex items-center space-x-2">
-                              <Mic className="w-4 h-4 text-aqua" />
-                              <span className="text-sm font-medium">
-                                Family Recipe Story
-                              </span>
-                            </div>
-                            <div className="flex items-center space-x-2">
-                              <div className="flex-1 bg-aqua/10 rounded-full h-2">
-                                <div className="bg-aqua h-2 rounded-full w-1/2"></div>
-                              </div>
-                              <span className="text-xs text-muted-foreground">
-                                2:34
-                              </span>
-                            </div>
-                          </div>
-                        </Card>
-                      </div>
-                    </div>
-                  </div>
-                  <p className="text-primary font-medium">
-                    Grandparents
-                  </p>
-                  <p className="text-sm text-muted-foreground">
-                    54 memories
-                  </p>
-                </div>
-
-                {/* Connection Lines */}
-                <div className="flex justify-center">
-                  <div className="w-full h-px bg-gradient-to-r from-primary/30 via-coral/50 to-aqua/30 animate-pulse"></div>
-                </div>
-
-                {/* Parents */}
-                <div className="text-center space-y-3">
-                  <div className="flex justify-center space-x-4">
-                    <div
-                      className="relative group cursor-pointer transform hover:scale-110 transition-all duration-300"
-                      onClick={() => {
-                        const popup =
-                          document.getElementById(
-                            "father-popup",
-                          );
-                        if (popup)
-                          popup.classList.toggle("hidden");
-                      }}
-                    >
-                      <Avatar className="w-16 h-16 border-4 border-coral/30 hover:border-coral transition-all">
-                        <AvatarImage src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&h=100&fit=crop&crop=face" />
-                        <AvatarFallback>F</AvatarFallback>
-                      </Avatar>
-                      <Badge className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 bg-coral text-white text-xs">
-                        42
-                      </Badge>
-
-                      {/* Interactive popup */}
-                      <div
-                        id="father-popup"
-                        className="hidden absolute -top-36 left-1/2 transform -translate-x-1/2 z-50"
-                      >
-                        <Card className="memory-card w-60 p-4 shadow-xl">
-                          <div className="space-y-3">
-                            <div className="flex items-center space-x-2">
-                              <Video className="w-4 h-4 text-coral" />
-                              <span className="text-sm font-medium">
-                                Career Journey
-                              </span>
-                            </div>
-                            <ImageWithFallback
-                              src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&h=120&fit=crop&crop=face"
-                              alt="Career moment"
-                              className="w-full h-20 object-cover rounded"
-                            />
-                            <p className="text-xs text-muted-foreground">
-                              From engineer to entrepreneur
-                            </p>
-                          </div>
-                        </Card>
-                      </div>
-                    </div>
-
-                    <div
-                      className="relative group cursor-pointer transform hover:scale-110 transition-all duration-300"
-                      onClick={() => {
-                        const popup =
-                          document.getElementById(
-                            "mother-popup",
-                          );
-                        if (popup)
-                          popup.classList.toggle("hidden");
-                      }}
-                    >
-                      <Avatar className="w-16 h-16 border-4 border-coral/30 hover:border-coral transition-all">
-                        <AvatarImage src="https://images.unsplash.com/photo-1494790108755-2616b612b77c?w=100&h=100&fit=crop&crop=face" />
-                        <AvatarFallback>M</AvatarFallback>
-                      </Avatar>
-                      <Badge className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 bg-coral text-white text-xs">
-                        38
-                      </Badge>
-                    </div>
-                  </div>
-                  <p className="text-coral font-medium">
-                    Parents
-                  </p>
-                  <p className="text-sm text-muted-foreground">
-                    80 memories
-                  </p>
-                </div>
-              </div>
-
-              <div className="flex justify-center">
-                <div className="w-px h-8 bg-gradient-to-b from-coral/30 to-aqua/30 animate-pulse"></div>
-              </div>
-
-              {/* Children */}
-              <div className="text-center space-y-3">
-                <div className="flex justify-center space-x-4">
+            {/* Hero features */}
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 max-w-4xl mx-auto">
+              {heroFeatures.map((feature, index) => {
+                const FeatureIcon = feature.icon;
+                return (
                   <div
-                    className="relative group cursor-pointer transform hover:scale-110 transition-all duration-300"
-                    onClick={() => {
-                      const popup =
-                        document.getElementById("child1-popup");
-                      if (popup)
-                        popup.classList.toggle("hidden");
-                    }}
+                    key={index}
+                    className={`${feature.bgColor} ${feature.borderColor} border rounded-2xl p-6 text-center transition-all duration-300 hover:shadow-lg`}
                   >
-                    <Avatar className="w-16 h-16 border-4 border-aqua/30 hover:border-aqua transition-all">
-                      <AvatarImage src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop&crop=face" />
-                      <AvatarFallback>S</AvatarFallback>
-                    </Avatar>
-                    <Badge className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 bg-aqua text-white text-xs">
-                      15
-                    </Badge>
-
-                    {/* Time Capsule indicator */}
-                    <div className="absolute -top-2 -right-2">
-                      <div className="w-6 h-6 bg-purple-500 rounded-full flex items-center justify-center animate-pulse">
-                        <Clock className="w-3 h-3 text-white" />
-                      </div>
+                    <div className="w-12 h-12 mx-auto mb-4 bg-white rounded-xl flex items-center justify-center shadow-sm">
+                      <FeatureIcon className={`w-6 h-6 ${feature.color}`} />
                     </div>
-
-                    {/* Interactive popup */}
-                    <div
-                      id="child1-popup"
-                      className="hidden absolute -top-32 left-1/2 transform -translate-x-1/2 z-50"
-                    >
-                      <Card className="memory-card w-56 p-4 shadow-xl">
-                        <div className="space-y-3">
-                          <div className="bg-purple-100 rounded p-2">
-                            <div className="flex items-center space-x-1">
-                              <Clock className="w-3 h-3 text-purple-600" />
-                              <span className="text-xs text-purple-600">
-                                3 Time Capsules scheduled
-                              </span>
-                            </div>
-                          </div>
-                          <div className="flex items-center space-x-2">
-                            <Camera className="w-4 h-4 text-aqua" />
-                            <span className="text-sm font-medium">
-                              School memories
-                            </span>
-                          </div>
-                        </div>
-                      </Card>
-                    </div>
+                    <h3 className="text-lg font-semibold text-gray-900 mb-2">{feature.title}</h3>
+                    <p className="text-gray-600">{feature.description}</p>
                   </div>
-
-                  <div className="relative group cursor-pointer transform hover:scale-110 transition-all duration-300">
-                    <Avatar className="w-16 h-16 border-4 border-aqua/30 hover:border-aqua transition-all">
-                      <AvatarImage src="https://images.unsplash.com/photo-1494790108755-2616b612b77c?w=100&h=100&fit=crop&crop=face" />
-                      <AvatarFallback>D</AvatarFallback>
-                    </Avatar>
-                    <Badge className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 bg-aqua text-white text-xs">
-                      12
-                    </Badge>
-                  </div>
-                </div>
-                <p className="text-aqua font-medium">
-                  Children
-                </p>
-                <p className="text-sm text-muted-foreground">
-                  27 memories
-                </p>
-              </div>
-
-              <div className="text-center space-y-4">
-                <p className="text-xl text-primary">
-                  Total: 161 precious family memories preserved
-                </p>
-                <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                  <Button
-                    onClick={onGetStarted}
-                    variant="outline"
-                    className="border-primary text-primary hover:bg-primary hover:text-primary-foreground"
-                  >
-                    <Play className="w-5 h-5 mr-2" />
-                    Start Building Your Tree
-                  </Button>
-                  <p className="text-sm text-muted-foreground self-center">
-                    👆 Click on any family member above to see
-                    how memories connect
-                  </p>
-                </div>
-              </div>
+                );
+              })}
             </div>
-          </Card>
+          </div>
         </div>
       </section>
 
-      {/* Benefits Grid */}
-      <section className="py-16 px-4 bg-gradient-to-br from-muted/30 to-background">
-        <div className="max-w-6xl mx-auto space-y-12">
-          <div className="text-center space-y-4">
-            <h2 className="text-4xl text-primary">
-              Our Promise to Families
+      {/* Stats Section */}
+      <section className="py-16 bg-white border-y border-gray-100">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
+            {stats.map((stat, index) => {
+              const StatIcon = stat.icon;
+              return (
+                <div key={index} className="text-center">
+                  <div className="flex items-center justify-center mb-4">
+                    <div className="w-12 h-12 bg-gray-50 rounded-xl flex items-center justify-center">
+                      <StatIcon className={`w-6 h-6 ${stat.color}`} />
+                    </div>
+                  </div>
+                  <div className="text-3xl font-bold text-gray-900 mb-2">{stat.number}</div>
+                  <div className="text-gray-600">{stat.label}</div>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* Core Features Section */}
+      <section className="py-24 bg-gradient-to-br from-gray-50 to-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center space-y-4 mb-16">
+            <h2 className="text-4xl sm:text-5xl font-bold text-gray-900">
+              Everything Your Family Needs
             </h2>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              Because your memories deserve more than storage —
-              they deserve care, privacy, and preservation.
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              Powerful features designed to preserve, organize, and share your most precious family moments
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {benefits.map((benefit, index) => {
-              const BenefitIcon = benefit.icon;
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {coreFeatures.map((feature, index) => {
+              const FeatureIcon = feature.icon;
               return (
                 <Card
                   key={index}
-                  className="memory-card hover:shadow-lg transition-all duration-300"
+                  className={`${feature.bgColor} ${feature.borderColor} border-2 hover:shadow-xl transition-all duration-300 cursor-pointer group`}
+                  onClick={onGetStarted}
                 >
-                  <CardContent className="p-6 space-y-4">
-                    <div
-                      className={`p-4 ${benefit.bgColor} rounded-full w-fit`}
+                  <CardContent className="p-8 text-center space-y-6">
+                    <div className={`w-16 h-16 mx-auto bg-gradient-to-br ${feature.gradient} rounded-2xl flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300`}>
+                      <FeatureIcon className="w-8 h-8 text-white" />
+                    </div>
+                    
+                    <div className="space-y-3">
+                      <h3 className="text-xl font-semibold text-gray-900">{feature.title}</h3>
+                      <p className="text-gray-600 leading-relaxed">{feature.description}</p>
+                    </div>
+
+                    <Button
+                      variant="outline"
+                      size="sm"
+                      className={`${feature.borderColor} ${feature.textColor} hover:bg-white group-hover:scale-105 transition-all duration-300`}
                     >
-                      <BenefitIcon
-                        className={`w-8 h-8 ${benefit.color}`}
-                      />
-                    </div>
-                    <div>
-                      <h3 className="text-xl font-medium text-primary mb-2">
-                        {benefit.title}
-                      </h3>
-                      <p className="text-muted-foreground">
-                        {benefit.description}
-                      </p>
-                    </div>
+                      Learn More
+                      <ArrowRight className="w-4 h-4 ml-2" />
+                    </Button>
                   </CardContent>
                 </Card>
               );
@@ -891,83 +383,227 @@ export function LandingPage({
         </div>
       </section>
 
-      {/* Statistics */}
-      <section className="py-16 px-4">
-        <div className="max-w-4xl mx-auto">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-            {stats.map((stat, index) => {
-              const StatIcon = stat.icon;
+      {/* How It Works Section */}
+      <section className="py-24 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center space-y-4 mb-16">
+            <h2 className="text-4xl sm:text-5xl font-bold text-gray-900">
+              How It Works
+            </h2>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              Get started in minutes and begin preserving your family legacy today
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {howItWorks.map((step, index) => {
+              const StepIcon = step.icon;
               return (
-                <Card
-                  key={index}
-                  className="memory-card text-center p-6"
-                >
-                  <div className="space-y-3">
-                    <StatIcon
-                      className={`w-8 h-8 mx-auto ${stat.color}`}
-                    />
-                    <div>
-                      <p
-                        className={`text-3xl font-semibold ${stat.color}`}
-                      >
-                        {stat.number}
-                      </p>
-                      <p className="text-muted-foreground">
-                        {stat.label}
-                      </p>
+                <div key={index} className="text-center space-y-6">
+                  <div className="relative">
+                    <div className={`w-20 h-20 mx-auto ${step.bgColor} rounded-2xl flex items-center justify-center shadow-lg`}>
+                      <StepIcon className={`w-10 h-10 ${step.color}`} />
+                    </div>
+                    <div className="absolute -top-2 -right-2 w-8 h-8 bg-violet-600 text-white rounded-full flex items-center justify-center text-sm font-bold">
+                      {step.step}
                     </div>
                   </div>
-                </Card>
+                  
+                  <div className="space-y-3">
+                    <h3 className="text-xl font-semibold text-gray-900">{step.title}</h3>
+                    <p className="text-gray-600 leading-relaxed">{step.description}</p>
+                  </div>
+
+                  {index < howItWorks.length - 1 && (
+                    <div className="hidden lg:block absolute top-10 left-full w-full">
+                      <ArrowRight className="w-6 h-6 text-gray-300 mx-auto" />
+                    </div>
+                  )}
+                </div>
               );
             })}
           </div>
         </div>
       </section>
 
-      {/* Testimonials */}
-      <section className="py-16 px-4 bg-gradient-to-br from-coral/10 to-primary/5">
-        <div className="max-w-4xl mx-auto text-center space-y-12">
-          <div className="space-y-4">
-            <h2 className="text-4xl text-primary">
-              Loved & Trusted by Families Across Generations
+      {/* Interactive Demo Section */}
+      <section className="py-24 bg-gradient-to-br from-violet-50 to-purple-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center space-y-4 mb-16">
+            <h2 className="text-4xl sm:text-5xl font-bold text-gray-900">
+              See Your Family Tree Come to Life
             </h2>
-            <p className="text-xl text-muted-foreground">
-              Real stories from the people who trust us with
-              their most precious memories
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              Watch how memories connect across generations in your interactive family tree
             </p>
           </div>
 
-          <Card className="memory-card p-8">
-            <div className="space-y-6">
+          <Card className="bg-white/80 backdrop-blur-sm border-2 border-violet-200 shadow-2xl rounded-3xl overflow-hidden">
+            <CardContent className="p-12">
+              <div className="relative">
+                {/* Family tree visualization */}
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-12 items-center">
+                  {/* Grandparents */}
+                  <div className="text-center space-y-4">
+                    <div className="flex justify-center space-x-4">
+                      <div className="relative group cursor-pointer">
+                        <Avatar className="w-16 h-16 border-4 border-amber-200 hover:border-amber-400 transition-all duration-300 group-hover:scale-110">
+                          <AvatarImage src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop&crop=face" />
+                          <AvatarFallback>GF</AvatarFallback>
+                        </Avatar>
+                        <Badge className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 bg-amber-500 text-white text-xs">
+                          23 memories
+                        </Badge>
+                      </div>
+                      <div className="relative group cursor-pointer">
+                        <Avatar className="w-16 h-16 border-4 border-amber-200 hover:border-amber-400 transition-all duration-300 group-hover:scale-110">
+                          <AvatarImage src="https://images.unsplash.com/photo-1554151228-14d9def656e4?w=100&h=100&fit=crop&crop=face" />
+                          <AvatarFallback>GM</AvatarFallback>
+                        </Avatar>
+                        <Badge className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 bg-amber-500 text-white text-xs">
+                          31 memories
+                        </Badge>
+                      </div>
+                    </div>
+                    <div>
+                      <p className="font-semibold text-gray-900">Grandparents</p>
+                      <p className="text-sm text-gray-600">54 total memories</p>
+                    </div>
+                  </div>
+
+                  {/* Connection lines */}
+                  <div className="hidden md:flex justify-center">
+                    <div className="w-full h-px bg-gradient-to-r from-amber-300 via-violet-300 to-emerald-300"></div>
+                  </div>
+
+                  {/* Parents */}
+                  <div className="text-center space-y-4">
+                    <div className="flex justify-center space-x-4">
+                      <div className="relative group cursor-pointer">
+                        <Avatar className="w-16 h-16 border-4 border-violet-200 hover:border-violet-400 transition-all duration-300 group-hover:scale-110">
+                          <AvatarImage src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&h=100&fit=crop&crop=face" />
+                          <AvatarFallback>F</AvatarFallback>
+                        </Avatar>
+                        <Badge className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 bg-violet-500 text-white text-xs">
+                          42 memories
+                        </Badge>
+                      </div>
+                      <div className="relative group cursor-pointer">
+                        <Avatar className="w-16 h-16 border-4 border-violet-200 hover:border-violet-400 transition-all duration-300 group-hover:scale-110">
+                          <AvatarImage src="https://images.unsplash.com/photo-1494790108755-2616b612b77c?w=100&h=100&fit=crop&crop=face" />
+                          <AvatarFallback>M</AvatarFallback>
+                        </Avatar>
+                        <Badge className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 bg-violet-500 text-white text-xs">
+                          38 memories
+                        </Badge>
+                      </div>
+                    </div>
+                    <div>
+                      <p className="font-semibold text-gray-900">Parents</p>
+                      <p className="text-sm text-gray-600">80 total memories</p>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Vertical connection */}
+                <div className="flex justify-center my-8">
+                  <div className="w-px h-12 bg-gradient-to-b from-violet-300 to-emerald-300"></div>
+                </div>
+
+                {/* Children */}
+                <div className="text-center space-y-4">
+                  <div className="flex justify-center space-x-4">
+                    <div className="relative group cursor-pointer">
+                      <Avatar className="w-16 h-16 border-4 border-emerald-200 hover:border-emerald-400 transition-all duration-300 group-hover:scale-110">
+                        <AvatarImage src="https://images.unsplash.com/photo-1544717297-fa95b6ee9643?w=100&h=100&fit=crop&crop=face" />
+                        <AvatarFallback>C1</AvatarFallback>
+                      </Avatar>
+                      <Badge className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 bg-emerald-500 text-white text-xs">
+                        15 memories
+                      </Badge>
+                      {/* Time capsule indicator */}
+                      <div className="absolute -top-2 -right-2 w-6 h-6 bg-purple-500 rounded-full flex items-center justify-center">
+                        <Clock className="w-3 h-3 text-white" />
+                      </div>
+                    </div>
+                    <div className="relative group cursor-pointer">
+                      <Avatar className="w-16 h-16 border-4 border-emerald-200 hover:border-emerald-400 transition-all duration-300 group-hover:scale-110">
+                        <AvatarImage src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&h=100&fit=crop&crop=face" />
+                        <AvatarFallback>C2</AvatarFallback>
+                      </Avatar>
+                      <Badge className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 bg-emerald-500 text-white text-xs">
+                        12 memories
+                      </Badge>
+                    </div>
+                  </div>
+                  <div>
+                    <p className="font-semibold text-gray-900">Children</p>
+                    <p className="text-sm text-gray-600">27 total memories</p>
+                  </div>
+                </div>
+
+                {/* Total count */}
+                <div className="text-center mt-12 space-y-4">
+                  <div className="inline-flex items-center space-x-2 bg-gradient-to-r from-violet-100 to-purple-100 rounded-full px-6 py-3">
+                    <Heart className="w-5 h-5 text-violet-600" />
+                    <span className="text-lg font-semibold text-violet-700">161 precious family memories preserved</span>
+                  </div>
+                  
+                  <Button
+                    onClick={onGetStarted}
+                    className="bg-gradient-to-r from-violet-600 to-purple-600 hover:from-violet-700 hover:to-purple-700 text-white px-6 py-3 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300"
+                  >
+                    <Play className="w-4 h-4 mr-2" />
+                    Start Building Your Tree
+                  </Button>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+        </div>
+      </section>
+
+      {/* Testimonials Section */}
+      <section className="py-24 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center space-y-4 mb-16">
+            <h2 className="text-4xl sm:text-5xl font-bold text-gray-900">
+              Loved by Families Everywhere
+            </h2>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              Real stories from families who trust us with their most precious memories
+            </p>
+          </div>
+
+          <Card className="bg-gradient-to-br from-violet-50 to-purple-50 border-2 border-violet-200 shadow-xl rounded-3xl">
+            <CardContent className="p-12 text-center space-y-8">
               <div className="flex justify-center">
-                <Avatar className="w-20 h-20 border-4 border-primary/20">
-                  <AvatarImage
-                    src={
-                      testimonials[currentTestimonial].avatar
-                    }
-                  />
+                <Avatar className="w-24 h-24 border-4 border-white shadow-lg">
+                  <AvatarImage src={testimonials[currentTestimonial].avatar} />
                   <AvatarFallback>
-                    {testimonials[
-                      currentTestimonial
-                    ].name.charAt(0)}
+                    {testimonials[currentTestimonial].name.charAt(0)}
                   </AvatarFallback>
                 </Avatar>
               </div>
 
-              <blockquote className="text-2xl text-primary italic max-w-3xl mx-auto">
-                "{testimonials[currentTestimonial].text}"
-              </blockquote>
+              <div className="space-y-4">
+                <div className="flex justify-center space-x-1">
+                  {[...Array(testimonials[currentTestimonial].rating)].map((_, i) => (
+                    <Star key={i} className="w-5 h-5 fill-amber-400 text-amber-400" />
+                  ))}
+                </div>
+                
+                <blockquote className="text-2xl font-medium text-gray-900 italic max-w-4xl mx-auto leading-relaxed">
+                  "{testimonials[currentTestimonial].text}"
+                </blockquote>
+              </div>
 
-              <div className="text-center">
-                <p className="text-xl font-medium text-primary">
+              <div className="space-y-2">
+                <p className="text-xl font-semibold text-gray-900">
                   {testimonials[currentTestimonial].name}
                 </p>
-                <p className="text-lg text-muted-foreground">
-                  {testimonials[currentTestimonial].age} •{" "}
-                  {testimonials[currentTestimonial].relation}
-                </p>
-                <p className="text-muted-foreground">
-                  {testimonials[currentTestimonial].location}
+                <p className="text-gray-600">
+                  {testimonials[currentTestimonial].role} • {testimonials[currentTestimonial].location}
                 </p>
               </div>
 
@@ -976,10 +612,10 @@ export function LandingPage({
                   <button
                     key={index}
                     onClick={() => setCurrentTestimonial(index)}
-                    className={`w-3 h-3 rounded-full transition-all ${
+                    className={`w-3 h-3 rounded-full transition-all duration-300 ${
                       index === currentTestimonial
-                        ? "bg-primary"
-                        : "bg-muted-foreground/30"
+                        ? "bg-violet-600 scale-125"
+                        : "bg-gray-300 hover:bg-gray-400"
                     }`}
                   />
                 ))}
@@ -987,71 +623,144 @@ export function LandingPage({
 
               <Button
                 onClick={nextTestimonial}
-                variant="ghost"
-                className="text-primary hover:bg-primary/10"
+                variant="outline"
+                className="border-violet-300 text-violet-700 hover:bg-violet-50"
               >
-                Next Story{" "}
+                Next Story
                 <ArrowRight className="w-4 h-4 ml-2" />
               </Button>
-            </div>
+            </CardContent>
           </Card>
         </div>
       </section>
 
-      {/* Final CTA */}
-      <section className="py-20 px-4 bg-gradient-to-br from-primary/10 to-aqua/10">
-        <div className="max-w-4xl mx-auto text-center space-y-8">
-          <div className="space-y-4">
-            <h2 className="text-5xl text-primary">
+      {/* Final CTA Section */}
+      <section className="py-24 bg-gradient-to-br from-violet-600 via-purple-600 to-pink-600 text-white relative overflow-hidden">
+        {/* Background pattern */}
+        <div className="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg"%3E%3Cg fill="none" fill-rule="evenodd"%3E%3Cg fill="%23ffffff" fill-opacity="0.1"%3E%3Ccircle cx="30" cy="30" r="4"/%3E%3C/g%3E%3C/g%3E%3C/svg%3E')] opacity-30"></div>
+        
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-12">
+          <div className="space-y-6">
+            <h2 className="text-5xl sm:text-6xl font-bold leading-tight">
               Start Your Family Legacy Today
             </h2>
-            <p className="text-2xl text-muted-foreground max-w-3xl mx-auto">
-              Join thousands of families who are preserving
-              their precious memories for future generations
+            <p className="text-xl sm:text-2xl text-violet-100 max-w-4xl mx-auto leading-relaxed">
+              Join thousands of families who are preserving their precious memories for future generations. 
+              Your family's story deserves to be remembered forever.
             </p>
           </div>
 
-          <div className="space-y-6">
+          <div className="space-y-8">
             <Button
               onClick={onGetStarted}
-              className="vibrant-button text-primary-foreground text-2xl px-12 py-6 h-auto"
+              size="lg"
+              className="bg-white text-violet-600 hover:bg-gray-50 px-12 py-6 text-xl font-bold rounded-2xl shadow-2xl hover:shadow-3xl transition-all duration-300 hover:scale-105"
             >
-              <Heart className="w-8 h-8 mr-3" />
-              Create Your Family Vault - It's Free Forever
+              <Heart className="w-6 h-6 mr-3" />
+              Create Your Family Vault - Free Forever
             </Button>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 max-w-2xl mx-auto text-center">
-              <div className="space-y-2">
-                <Shield className="w-8 h-8 text-primary mx-auto" />
-                <p className="text-lg font-medium text-primary">
-                  100% Private
-                </p>
-                <p className="text-muted-foreground">
-                  Your memories, your family only
-                </p>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
+              <div className="space-y-3">
+                <div className="w-12 h-12 bg-white/20 rounded-xl flex items-center justify-center mx-auto">
+                  <Shield className="w-6 h-6 text-white" />
+                </div>
+                <h3 className="text-lg font-semibold">100% Private</h3>
+                <p className="text-violet-100">Your memories, your family only</p>
               </div>
-              <div className="space-y-2">
-                <Clock className="w-8 h-8 text-coral mx-auto" />
-                <p className="text-lg font-medium text-coral">
-                  Setup in 2 Minutes
-                </p>
-                <p className="text-muted-foreground">
-                  Start preserving memories instantly
-                </p>
+              
+              <div className="space-y-3">
+                <div className="w-12 h-12 bg-white/20 rounded-xl flex items-center justify-center mx-auto">
+                  <Clock className="w-6 h-6 text-white" />
+                </div>
+                <h3 className="text-lg font-semibold">Setup in 2 Minutes</h3>
+                <p className="text-violet-100">Start preserving memories instantly</p>
               </div>
-              <div className="space-y-2">
-                <BookOpen className="w-8 h-8 text-aqua mx-auto" />
-                <p className="text-lg font-medium text-aqua">
-                  For All Generations
-                </p>
-                <p className="text-muted-foreground">
-                  From grandparents to grandchildren
-                </p>
+              
+              <div className="space-y-3">
+                <div className="w-12 h-12 bg-white/20 rounded-xl flex items-center justify-center mx-auto">
+                  <Users className="w-6 h-6 text-white" />
+                </div>
+                <h3 className="text-lg font-semibold">For All Generations</h3>
+                <p className="text-violet-100">From grandparents to grandchildren</p>
+              </div>
+            </div>
+          </div>
+
+          {/* Trust indicators */}
+          <div className="border-t border-white/20 pt-12">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+              <div>
+                <div className="text-3xl font-bold mb-2">256-bit</div>
+                <div className="text-violet-200">Encryption</div>
+              </div>
+              <div>
+                <div className="text-3xl font-bold mb-2">99.9%</div>
+                <div className="text-violet-200">Uptime</div>
+              </div>
+              <div>
+                <div className="text-3xl font-bold mb-2">24/7</div>
+                <div className="text-violet-200">Support</div>
+              </div>
+              <div>
+                <div className="text-3xl font-bold mb-2">GDPR</div>
+                <div className="text-violet-200">Compliant</div>
               </div>
             </div>
           </div>
         </div>
       </section>
+
+      {/* Footer */}
+      <footer className="bg-gray-900 text-white py-16">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+            <div className="space-y-4">
+              <div className="flex items-center space-x-2">
+                <Heart className="w-8 h-8 text-violet-400" />
+                <span className="text-xl font-bold">Memory Vault</span>
+              </div>
+              <p className="text-gray-400 leading-relaxed">
+                Preserving family memories for generations. Your sacred digital space for precious moments.
+              </p>
+            </div>
+            
+            <div className="space-y-4">
+              <h4 className="text-lg font-semibold">Product</h4>
+              <div className="space-y-2 text-gray-400">
+                <div>Features</div>
+                <div>Pricing</div>
+                <div>Security</div>
+                <div>Mobile App</div>
+              </div>
+            </div>
+            
+            <div className="space-y-4">
+              <h4 className="text-lg font-semibold">Support</h4>
+              <div className="space-y-2 text-gray-400">
+                <div>Help Center</div>
+                <div>Contact Us</div>
+                <div>Privacy Policy</div>
+                <div>Terms of Service</div>
+              </div>
+            </div>
+            
+            <div className="space-y-4">
+              <h4 className="text-lg font-semibold">Connect</h4>
+              <div className="space-y-2 text-gray-400">
+                <div>WhatsApp Support</div>
+                <div>Email Updates</div>
+                <div>Community</div>
+                <div>Blog</div>
+              </div>
+            </div>
+          </div>
+          
+          <div className="border-t border-gray-800 mt-12 pt-8 text-center text-gray-400">
+            <p>&copy; 2025 Memory Vault. Made with ❤️ for families everywhere.</p>
+          </div>
+        </div>
+      </footer>
     </div>
   );
 }
